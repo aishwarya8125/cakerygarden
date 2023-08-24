@@ -1,0 +1,153 @@
+doctype html
+html
+  head
+    title Shopping Cart
+    style.
+      body {
+      font-family: Arial, sans-serif;
+      background-color: #e869a8;
+      margin: 0;
+      padding: 0;
+      }
+      .cake-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      }
+      .cake-card {
+      background-color: #f7f7f7;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      transition: background-color 0.3s;
+      }
+      .cake-card:nth-child(odd) {
+      background-color: #e0f4fd;
+      }
+      .cake-name {
+      font-size: 1.5rem;
+      margin: 10px 0;
+      }
+      .cake-details {
+      font-size: 0.9rem;
+      margin: 10px 0;
+      }
+      .cake-rate {
+      font-weight: bold;
+      margin-bottom: 5px;
+      }
+      .cake-rating {
+      color: #ffac33;
+      font-size: 1.2rem;
+      }
+      .add-to-cart-btn {
+      background-color: #ffac33;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      }
+      .add-to-cart-btn:hover {
+      background-color: #ff9933;
+      }
+      .cart {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 20px;
+      }
+      .cart-header {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      }
+  body
+    h1(style='text-align: center;') Delicious Cakes
+    ul.cake-list
+      li.cake-card
+        h2.cake-name Chocolate Cake
+        p.cake-details Ingredients: Flour, sugar, cocoa powder, eggs, butter
+        p.cake-rate Rate: $25
+        p.cake-rating Rating: 4.5/5
+        button.add-to-cart-btn(onclick="addToCart('Chocolate Cake', 25)") Add to Cart
+      li.cake-card
+        h2.cake-name Vanilla Cake
+        p.cake-details Ingredients: Flour, sugar, eggs, vanilla extract
+        p.cake-rate Rate: $20
+        p.cake-rating Rating: 4.2/5
+        button.add-to-cart-btn(onclick="addToCart('Vanilla Cake', 20)") Add to Cart
+      li.cake-card
+        h2.cake-name Strawberry Cake
+        p.cake-details Ingredients: Flour, sugar, eggs, strawberries
+        p.cake-rate Rate: $28
+        p.cake-rating Rating: 4.7/5
+        button.add-to-cart-btn(onclick="addToCart('Strawberry Cake', 28)") Add to Cart
+      li.cake-card
+        h2.cake-name Red Velvet Cake
+        p.cake-details Ingredients: Flour, sugar, cocoa powder, buttermilk, red food coloring
+        p.cake-rate Rate: $30
+        p.cake-rating Rating: 4.4/5
+        button.add-to-cart-btn(onclick="addToCart('Red Velvet Cake', 30)") Add to Cart
+      li.cake-card
+        h2.cake-name Carrot Cake
+        p.cake-details Ingredients: Flour, sugar, eggs, carrots, walnuts
+        p.cake-rate Rate: $22
+        p.cake-rating Rating: 4.3/5
+        button.add-to-cart-btn(onclick="addToCart('Carrot Cake', 22)") Add to Cart
+      li.cake-card
+        h2.cake-name Blueberry Cheesecake
+        p.cake-details Ingredients: Cream cheese, blueberries, graham cracker crust
+        p.cake-rate Rate: $32
+        p.cake-rating Rating: 4.8/5
+        button.add-to-cart-btn(onclick="addToCart('Blueberry Cheesecake', 32)") Add to Cart
+      li.cake-card
+        h2.cake-name Lemon Poppy Seed Cake
+        p.cake-details Ingredients: Flour, sugar, eggs, lemon zest, poppy seeds
+        p.cake-rate Rate: $27
+        p.cake-rating Rating: 4.6/5
+        button.add-to-cart-btn(onclick="addToCart('Lemon Poppy Seed Cake', 27)") Add to Cart
+      li.cake-card
+        h2.cake-name Mango Mousse Cake
+        p.cake-details Ingredients: Mango puree, cream, gelatin, biscuit base
+        p.cake-rate Rate: $35
+        p.cake-rating Rating: 4.9/5
+        button.add-to-cart-btn(onclick="addToCart('Mango Mousse Cake', 35)") Add to Cart
+      // Add more cake cards here
+    .cart
+      h2.cart-header Shopping Cart
+      ul#cart-items
+      button(onclick='buyNow()') Buy Now
+    script.
+      const cart = [];
+      function addToCart(cakeName, cakePrice) {
+      cart.push({ name: cakeName, price: cakePrice });
+      updateCartDisplay();
+      }
+      function updateCartDisplay() {
+      const cartItemsElement = document.getElementById('cart-items');
+      cartItemsElement.innerHTML = '';
+      cart.forEach(item => {
+      const cartItemElement = document.createElement('li');
+      cartItemElement.textContent = `${item.name} - $${item.price}`;
+      cartItemsElement.appendChild(cartItemElement);
+      });
+      }
+      function buyNow() {
+      if (cart.length === 0) {
+      alert('Your cart is empty. Add items before buying.');
+      } else {
+      alert('Thank you for your purchase!\\nTotal items: ' + cart.length);
+      cart.length = 0; // Empty the cart after buying
+      updateCartDisplay();
+      }
+      }
+
+
+
