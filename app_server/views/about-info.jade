@@ -1,31 +1,11 @@
-doctype html
-html
-  head
-    title About Us - Online Cake Delivery
-    style.
-      body {
-      font-family: Arial, sans-serif;
-      background-color: #e869a8;
-      margin: 0;
-      padding: 0;
-      }
-      .about-container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #ffe0e0;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-      .about-content {
-      line-height: 1.6;
-      color: #000; 
-      }
-  body
-    h1(style='text-align: center;') About Us
-    .about-container
-      .about-content
-        p
+extends layout
+
+block content
+  // About Content
+  section.about-info
+    h1.center-title About Info
+    p.center-text Learn more about our history and commitment to quality.
+    p
           | Welcome to CakeryGarden! We are passionate about creating delightful cake experiences for all occasions.
         p
           | With a team of skilled bakers and decorators, we take pride in crafting the most delicious and visually appealing cakes that are perfect for birthdays, weddings, anniversaries, and more.
