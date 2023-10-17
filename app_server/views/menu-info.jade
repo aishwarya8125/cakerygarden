@@ -74,23 +74,23 @@ block styles
 block content
   // Display menu items with details as cards
   section.menu-info
-    h1.center-title Menu Info
-    p.center-text Explore our delicious menu options for every occasion
+    h1.center-title Weather Info
+    p.center-text Explore our Website with ur choice location
     each cake in cakes
       .card(style="display: flex; flex-direction: row; margin: 10px;background-color: lightblue;")
         img.card-img-top(src=cake.image, alt=cake.name) // Cake image
         .card-body
           h5.card-title(style="font-size: 2rem;  padding: 5px; color:black;") #{cake.name} 
-          p.card-text(style="font-size: 1.5rem;  padding: 5px; color:black;") Ingredients: #{cake.ingredients} 
-          p.card-text(style="font-size: 1.5rem;   padding: 5px; color:black;") Price: $#{cake.price} 
-          p.card-text(style="font-size: 1.5rem;  padding: 5px; color:black;") Rating: #{cake.rating} 
-          button.add-to-cart(data-name=cake.name, data-price=cake.price) Add to Cart
+          p.card-text(style="font-size: 1.5rem;  padding: 5px; color:black;") places: #{cake.ingredients} 
+          p.card-text(style="font-size: 1.5rem;   padding: 5px; color:black;") ConstTemp: #{cake.price} 
+          p.card-text(style="font-size: 1.5rem;  padding: 5px; color:black;") AvgTemp: #{cake.rating} 
+          button.add-to-cart(data-name=cake.name, data-price=cake.price) Click here
 
   // Cart section
   section.cart
-    h2 Your Cart
+    h2 Your location
     ul#cart-items
-    p Total Price: $<span id="total-price">0</span>
+    p Present Temp: <span id="total-price">0</span>
 
   // JavaScript for adding items to cart and calculating total price (same as previous)
   script.
@@ -114,9 +114,9 @@ block content
 
       cart.forEach((item) => {
         const listItem = document.createElement('li');
-        listItem.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+        listItem.textContent = `${item.name} - ${item.price.toFixed(2)}`;
         cartItemsList.appendChild(listItem);
-        totalPrice += item.price;
+        totalPrice += (item.price/4)+10;
       });
 
       totalPriceElement.textContent = totalPrice.toFixed(2);
